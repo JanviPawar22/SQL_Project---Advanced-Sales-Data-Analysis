@@ -1,0 +1,31 @@
+-- 1. Total revenue per region
+select region, sum(revenue) as total_revenue
+from sales_data
+group by region
+order by total_revenue desc;
+
+-- 2. Top 3 products by revenue
+select product, sum(revenue) as total_revenue
+from sales_data
+group by product
+order by total_revenue desc
+limit 3;
+
+-- 3. Monthly trend analysis
+select month(date) as month, sum(revenue) as total_revenue
+from sales_data
+group by month(date)
+order by month(date);
+
+-- 4. Salesperson performance with commission
+select s.name,
+       sum(d.revenue) as total_revenue,
+       calc_commission(sum(d.revenue)) as total_commission
+from sales_data d
+join salesperson s on d.salesperson_id = s.salesperson_id
+group by s.name;
+
+-- 5. Online vs Offline comparison
+select channel, sum(revenue) as total_revenue, sum(units_sold) as total_units
+from sales_data
+group by channel;
