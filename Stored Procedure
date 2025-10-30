@@ -1,0 +1,15 @@
+delimiter //
+create procedure get_top_salesperson_by_month(in month_no int)
+begin
+    select
+        s.name,
+        month(d.date) as month,
+        sum(d.revenue) as total_revenue
+    from sales_data d
+    join salesperson s on d.salesperson_id = s.salesperson_id
+    where month(d.date) = month_no
+    group by s.name, month(d.date)
+    order by total_revenue desc
+    limit 1;
+end //
+delimiter ;
