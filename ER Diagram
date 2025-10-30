@@ -1,0 +1,22 @@
+┌──────────────────┐        ┌─────────────────────┐
+│   salesperson     │        │      customer       │
+│-------------------│        │---------------------│
+│ salesperson_id PK │◄──────▶│ customer_type       │
+│ name              │        │ channel             │
+└──────────────────┘        └─────────────────────┘
+           │
+           │
+           ▼
+┌──────────────────────────┐
+│        sales_data         │
+│---------------------------│
+│ sale_id PK                │
+│ date                      │
+│ product                   │
+│ region                    │
+│ units_sold                │
+│ revenue                   │
+│ salesperson_id FK         │
+│ customer_type             │
+│ channel                   │
+└────────────────────────── ┘
