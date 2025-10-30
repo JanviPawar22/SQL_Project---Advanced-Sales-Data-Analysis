@@ -1,0 +1,17 @@
+create table salesperson (
+    salesperson_id int auto_increment primary key,
+    name varchar(50) not null
+);
+
+create table sales_data (
+    sale_id int auto_increment primary key,
+    date date not null,
+    product varchar(50),
+    region varchar(50),
+    units_sold int,
+    revenue decimal(10,2),
+    salesperson_id int,
+    channel varchar(20),
+    customer_type varchar(20),
+    foreign key (salesperson_id) references salesperson(salesperson_id)
+);
