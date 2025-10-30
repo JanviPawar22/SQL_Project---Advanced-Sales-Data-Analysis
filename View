@@ -1,0 +1,10 @@
+create view v_sales_summary as
+select
+    s.name as salesperson,
+    d.region,
+    d.channel,
+    sum(d.units_sold) as total_units,
+    sum(d.revenue) as total_revenue
+from sales_data d
+join salesperson s on d.salesperson_id = s.salesperson_id
+group by s.name, d.region, d.channel;
