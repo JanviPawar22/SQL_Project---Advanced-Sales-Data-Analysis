@@ -1,0 +1,54 @@
+The project follows a **star schema model** with one fact table and multiple dimension tables.
+
+Tables included:
+- `dim_date`
+- `dim_product`
+- `dim_region`
+- `dim_salesperson`
+- `dim_channel`
+- `dim_customer_type`
+- `fact_sales`
+
+SELECT * FROM project.data;
+create table dim_date (
+    date_id serial primary key,
+    order_date date unique,
+    month int,
+    quarter int,
+    year int
+);
+
+create table dim_product (
+    product_id serial primary key,
+    product_name varchar(100),
+    category varchar(50)
+);
+create table dim_region (
+    region_id serial primary key,
+    region_name varchar(50)
+);
+
+create table dim_salesperson (
+    salesperson_id serial primary key,
+    salesperson_name varchar(100)
+);
+
+create table dim_channel (
+    channel_id serial primary key,
+    channel_name varchar(50)
+);
+create table dim_customer_type (
+    customer_type_id serial primary key,
+    customer_type varchar(50)
+);
+
+create table fact_sales (
+    sales_id serial primary key,
+    date_id int references dim_date(date_id),
+    product_id int references dim_product(product_id),
+    region_id int references dim_region(region_id),
+    salesperson_id int references dim_salesperson(salesperson_id),
+    channel_id int references dim_channel(channel_id),
+    customer_type_id int references dim_customer_type(customer_type_id),
+    units_sold int,
+    revenue numeric(12,2)
