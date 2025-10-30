@@ -1,0 +1,11 @@
+insert into salesperson (name)
+values ('Meena'), ('Raj'), ('Anita');
+
+insert into sales_data (date, product, region, units_sold, revenue, salesperson_id, channel, customer_type)
+values
+('2022-01-01', 'Almonds', 'West', 37, 295.16, 1, 'Online', 'Retail'),
+('2022-01-01', 'Raisins', 'East', 14, 218.39, 2, 'Online', 'Wholesale'),
+('2022-01-01', 'Walnuts', 'West', 45, 642.71, 3, 'Online', 'Retail'),
+('2022-02-01', 'Pistachios', 'South', 6, 32.33, 2, 'Offline', 'Retail'),
+('2022-02-01', 'Cashews', 'East', 41, 509.45, 1, 'Online', 'Wholesale'),
+('2022-02-01', 'Cashews', 'West', 3, 37.12, 1, 'Offline', 'Wholesale');
